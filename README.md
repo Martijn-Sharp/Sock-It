@@ -14,7 +14,7 @@ or
 
 ### Want to contribute? ###
 
-* Drop me a message
+* Just do it!
 
 ### Ideals ###
 
@@ -46,7 +46,7 @@ public class MyController : WebSocketController
 Unlike the regular MVC Controller route handling, the websocket routehandling expects an implicit route, which means there's no default `Index` method which will get called
 > Perhaps something to think about, aye?
 
-When making a method in the WebSocketController you can either return an IWebSocketActionResult or ... any object you'd like to return.
+When making a method in the `WebSocketController` you can either return an `IWebSocketActionResult` or ... any `object` you'd like to return.
 ```
 public IWebSocketActionResult Index()
 {
