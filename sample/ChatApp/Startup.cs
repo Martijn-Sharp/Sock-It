@@ -15,7 +15,7 @@ namespace ChatApp
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMartijnsWebsockets().AddJson().AddXml().AddRazor();
+            services.AddSockIt().AddJson().AddXml().AddRazor();
             services.AddMvc();
         }
 
@@ -30,7 +30,7 @@ namespace ChatApp
             }
 
             app.UseStaticFiles();
-            app.UseMartijnsWebsockets();
+            app.UseSockIt();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

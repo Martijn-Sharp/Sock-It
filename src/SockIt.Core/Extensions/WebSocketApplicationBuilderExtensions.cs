@@ -6,7 +6,7 @@ namespace SockIt.Core.Extensions
     public static class WebSocketApplicationBuilderExtensions
     {
         /// <summary>Use Martijn's WebSockets solution in your request pipeline</summary>
-        public static IApplicationBuilder UseMartijnsWebsockets(this IApplicationBuilder applicationBuilder)
+        public static IApplicationBuilder UseSockIt(this IApplicationBuilder applicationBuilder)
         {
             // Use MVC's websocket support
             applicationBuilder.UseWebSockets();

@@ -9,7 +9,7 @@ namespace SockIt.Core.Extensions
     public static class WebSocketServiceCollectionExtensions
     {
         /// <summary>Adds Martijn's WebSockets solution to your application</summary>
-        public static IWebSocketServicesBuilder AddMartijnsWebsockets(this IServiceCollection services)
+        public static IWebSocketServicesBuilder AddSockIt(this IServiceCollection services)
         {
             // In case this hasn't been done, explicitely add the IHttpContextAccessor implementation
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();

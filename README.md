@@ -35,8 +35,36 @@ or
 
 ### How does it work? ###
 
-It works very similar to how you'd use regular Controllers. When making a new controller for a websocket connection you inherit from the `WebSocketController` class, like this:
+Add these lines of code to your startup class:
+``` csharp
+public void ConfigureServices(IServiceCollection services)
+{
+	services.AddSockIt().AddJson().AddXml().AddRazor();
+	services.AddMvc();
+}
+
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+{
+    loggerFactory.AddConsole();
+
+    if (env.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+    }
+
+    app.UseStaticFiles();
+    app.UseSockIt();
+    app.UseMvc(routes =>
+    {
+        routes.MapRoute(
+            name: "default",
+            template: "{controller=Home}/{action=Index}/{id?}");
+    });
+}
 ```
+
+It works very similar to how you'd use regular Controllers. When making a new controller for a websocket connection you inherit from the `WebSocketController` class, like this:
+``` csharp
 public class MyController : WebSocketController
 {
 	// Here go your awesome methods
@@ -47,7 +75,8 @@ Unlike the regular MVC Controller route handling, the websocket routehandling ex
 > Perhaps something to think about, aye?
 
 When making a method in the `WebSocketController` you can either return an `IWebSocketActionResult` or ... any `object` you'd like to return.
-```
+
+``` csharp
 public IWebSocketActionResult Index()
 {
     return View("Index");
@@ -55,15 +84,17 @@ public IWebSocketActionResult Index()
 ```
 
 The `View` method will use the Razor engine, if you want to return JSON or XML that's fine too, I made that for you!
-```
+
+``` csharp
 public IWebSocketActionResult Index()
 {
     return Json("nice");
 }
 ```
 
+
 or
-```
+``` csharp
 public object Index()
 {
     return "nice";
@@ -71,7 +102,8 @@ public object Index()
 ```
 
 What if you want to supply parameters? No problem!
-```
+
+```csharp
 public IWebSocketActionResult Index(YourAwesomeModel model)
 {
     return View("Index", model);
@@ -79,7 +111,8 @@ public IWebSocketActionResult Index(YourAwesomeModel model)
 ```
 
 Want do to something query parameter-esque? Okay...
-```
+
+```csharp
 public IWebSocketActionResult Index(string query, YourAwesomeModel model)
 {
     return View("Index", model);
