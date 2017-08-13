@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SockIt.Abstractions\SockIt.Abstractions.csproj" />
+    <ProjectReference Include="..\SockIt.Formatters.Json\SockIt.Formatters.Json.csproj" />
+    <ProjectReference Include="..\SockIt.Formatters.Razor\SockIt.Formatters.Razor.csproj" />
+    <ProjectReference Include="..\SockIt.Formatters.Xml\SockIt.Formatters.Xml.csproj" />
+  </ItemGroup>
+
+</Project>

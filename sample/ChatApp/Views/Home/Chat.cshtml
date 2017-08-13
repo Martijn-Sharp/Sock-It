@@ -1,0 +1,11 @@
+﻿@model ChatApp.Models.HomeChatViewModel
+@Html.HiddenFor(m => m.UserName)
+<div id="chat-container" class="row">
+</div>
+<div class="form-group">
+    <input id="message-input" type="text"/>
+    <button id="message-submit" type="button" class="btn btn-default">Submit</button>
+</div>
+@section Scripts{
+    <script src="~/js/chat.js" asp-append-version="true"></script>
+}
